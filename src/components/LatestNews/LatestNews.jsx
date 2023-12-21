@@ -5,9 +5,6 @@ import styles from "./styles.module.css";
 
 const LatestNews = () => {
   const { data, isLoading } = useFetch(getLatestNews);
-  console.log(LatestNews)
-
-  console.log('123')
   return ( 
     <section className={styles.section}>
       <BannersList banners={data && data.news} isLoading={isLoading} />
