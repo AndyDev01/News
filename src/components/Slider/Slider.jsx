@@ -1,16 +1,23 @@
 import React, { useRef } from "react";
 import styles from "./styles.module.css";
 
-const Slider = ({children, step = 150 }) => {
+const Slider = ({children, step = 300 }) => {
   const sliderRef = useRef(null)
 
   const scrollLeft = () => {
-    sliderRef.current.scrollLeft -= step
+    sliderRef.current.scrollTo({
+      left: sliderRef.current.scrollLeft - step,
+      behavior: 'smooth'
+    })
+  }
+  const scrollRight = () => {
+    sliderRef.current.scrollTo({
+      left: sliderRef.current.scrollLeft + step,
+      behavior: 'smooth'
+    })
   }
 
-  const scrollRight = () => {
-    sliderRef.current.scrollLeft += step
-  }
+
 
   return (
     <div className={styles.slider}>
